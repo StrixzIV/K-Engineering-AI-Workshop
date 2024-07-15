@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>K-Engineering AI Workshop</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+	<script src="./index.js"></script>
+</head>
+<body>
+
+	<h1>K-Engineering Teachable Machine Workshop</h1>
+
+	<input type="text" id="modelURL" placeholder="Enter Teachable Machine model URL">
+
+	<div><canvas id="canvas"></canvas></div>
+
+	<div class="buttondiv">
+		<button type="button" onclick="init()">Start</button>
+		<button type="button" onclick="stopCamera()">Stop</button>
+	</div>
+
+	<div id="label-container"></div>
+
+</body>
+</html>
