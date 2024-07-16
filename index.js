@@ -42,15 +42,12 @@ async function init() {
 	await webcam.play();
 	window.requestAnimationFrame(loop);
 
-	// append/get elements to the DOM
 	const canvas = document.getElementById("canvas");
 	canvas.width = size; canvas.height = size;
 	ctx = canvas.getContext("2d");
 	labelContainer = document.getElementById("label-container");
-	labelContainer.innerHTML = ""; // clear previous labels
-	for (let i = 0; i < maxPredictions; i++) { // and class labels
-		labelContainer.appendChild(document.createElement("div"));
-	}
+	labelContainer.innerHTML = "";
+
 }
 
 async function loop() {
@@ -67,17 +64,15 @@ async function predict() {
 	let highestConfidence = 0;
 	let highestClass = "";
 
-	for (let i = 0; i < maxPredictions; i++) {
-		if (prediction[i].probability > highestConfidence) {
-            highestConfidence = prediction[i].probability;
-            highestClass = prediction[i].className;
+	prediction.forEach(label => {
+		if (label.probability > highestConfidence) {
+            highestConfidence = label.probability;
+            highestClass = label.className;
 		}
-	}
-	
-	// Only display and speak class name if highest confidence is above 95% and not already spoken
-	if (highestConfidence > 0.9) { // Check only for high confidence
+	});
 
-		
+	if (highestConfidence > 0.9) {
+
 		switch (highestClass) {
 			
 			case "Lift":
