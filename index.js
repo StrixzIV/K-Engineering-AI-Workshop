@@ -15,7 +15,7 @@ async function init() {
 		return ;
 	}
 	
-	else if (!pattern.test(URL)) {
+	if (!pattern.test(URL)) {
 		alert('Invalid URL. Please enter a valid Teachable Machine model URL.');
 		return ;
 	}
@@ -28,6 +28,7 @@ async function init() {
         model = await tmPose.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
     }
+
 	catch (error) {
         alert('Failed to load the model. Please check the URL and try again.');
         console.error('Error loading the model:', error);
